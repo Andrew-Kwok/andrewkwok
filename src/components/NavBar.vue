@@ -45,15 +45,6 @@ watchEffect(() => {
     <div class="flex-none">
       <ul class="menu menu-horizontal px-1">
         <div class="swiper-pagination"> </div>
-
-<!--        <li-->
-<!--          v-for="section in sections"-->
-<!--          :key="section"-->
-<!--          @click="scrollToSection(section)"-->
-<!--          class="text-gray-100 btn btn-ghost"-->
-<!--        >-->
-<!--          {{ section.charAt(0).toUpperCase() + section.slice(1) }}-->
-<!--        </li>-->
       </ul>
     </div>
   </nav>
