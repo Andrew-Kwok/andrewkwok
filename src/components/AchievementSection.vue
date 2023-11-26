@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 const achievements = [
   {
@@ -28,43 +28,50 @@ const achievements = [
 </script>
 
 <template>
-  <v-timeline direction="horizontal">
-    <v-timeline-item>
-      <template v-slot:opposite>
-        Opposite content
-      </template>
-      <div>
-        <div class="text-h6">Content title</div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </div>
-    </v-timeline-item>
+  <div id="achievement" class="h-screen flex justify-center items-center">
+    <p class="text-7xl"> achievements </p>
+  </div>
 
-    <v-timeline-item>
-      <template v-slot:opposite>
-        Opposite content
-      </template>
-      <div>
-        <div class="text-h6">Content title</div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </div>
-    </v-timeline-item>
+<!--  <div id="achievements" :style="`height: calc(100vh - ${navbarHeight}px)`" class="h-screen flex justify-center items-center">-->
+<!--    <v-timeline direction="horizontal">-->
+<!--      <v-timeline-item>-->
+<!--        <template v-slot:opposite>-->
+<!--          Opposite content-->
+<!--        </template>-->
+<!--        <div>-->
+<!--          <div class="text-h6">Content title</div>-->
+<!--          <p>-->
+<!--            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.-->
+<!--          </p>-->
+<!--        </div>-->
+<!--      </v-timeline-item>-->
 
-    <v-timeline-item>
-      <template v-slot:opposite>
-        Opposite content
-      </template>
-      <div>
-        <div class="text-h6">Content title</div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </div>
-    </v-timeline-item>
-  </v-timeline>
+<!--      <v-timeline-item>-->
+<!--        <template v-slot:opposite>-->
+<!--          Opposite content-->
+<!--        </template>-->
+<!--        <div>-->
+<!--          <div class="text-h6">Content title</div>-->
+<!--          <p>-->
+<!--            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.-->
+<!--          </p>-->
+<!--        </div>-->
+<!--      </v-timeline-item>-->
+
+<!--      <v-timeline-item>-->
+<!--        <template v-slot:opposite>-->
+<!--          Opposite content-->
+<!--        </template>-->
+<!--        <div>-->
+<!--          <div class="text-h6">Content title</div>-->
+<!--          <p>-->
+<!--            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.-->
+<!--          </p>-->
+<!--        </div>-->
+<!--      </v-timeline-item>-->
+<!--    </v-timeline>-->
+<!--  </div>-->
+
 </template>
 
 <style scoped>

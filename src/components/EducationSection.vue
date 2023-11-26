@@ -1,9 +1,8 @@
-<script setup lang="ts">
-
+<script setup>
 </script>
 
 <template>
-  <div id="education" class="h-screen flex justify-center items-center">
+  <div class="h-screen flex justify-center items-center">
     <p class="text-7xl"> education </p>
   </div>
 </template>
