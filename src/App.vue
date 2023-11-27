@@ -26,11 +26,22 @@ const pagination = {
   },
 };
 
+const swiperInstance = ref()
+
+const onSwiper = (swiper) => {
+  swiperInstance.value = swiper
+}
+
+const slideToHome = () =>{
+  swiperInstance.value.slideTo(0);
+}
+
+
 </script>
 
 <template>
-  <Navbar />
-  <swiper @swiper="getRef"
+  <Navbar :slideToHome="slideToHome" />
+  <swiper @swiper="onSwiper"
       :direction="'vertical'"
       :slidesPerView="1"
       :spaceBetween="0"
@@ -38,10 +49,10 @@ const pagination = {
       :pagination="pagination"
       :modules="swiperModules"
   >
-      <swiper-slide id="home">
+      <swiper-slide>
         <HomeSection />
       </swiper-slide>
-      <swiper-slide id="education">
+      <swiper-slide>
         <EducationSection />
       </swiper-slide>
       <swiper-slide>
