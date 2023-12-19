@@ -19,38 +19,50 @@ const sections = ['home', 'education', 'experience', 'achievement', 'project', '
 
 const swiperModules = [Mousewheel, Pagination];
 const pagination = {
-  el: ".swiper-pagination",
+  el: ".navbar-swiper-pagination",
   clickable: true,
   renderBullet: function (index, className) {
     return `<li class="${className} text-gray-100 btn btn-ghost" data-slide="${index}" @click="handleSlideClick(${index})">${sections[index].charAt(0).toUpperCase() + sections[index].slice(1)}</li>`;
   },
 };
 
-const swiperInstance = ref()
+const swiperInstance = ref();
+const swiperEnabled = ref(true);
 
 const onSwiper = (swiper) => {
-  swiperInstance.value = swiper
-}
+  swiperInstance.value = swiper;
+};
 
-const slideToHome = () =>{
+const slideToHome = () =>   {
   swiperInstance.value.slideTo(0);
-}
+};
 
+const startCountdown = () => {
+  swiperEnabled.value = false;
+  setTimeout(() => {
+    swiperEnabled.value = true;
+  }, 500);
+};
+
+const theme = ref(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+const toggleTheme = () => {
+  theme.value = theme.value === 'dark' ? 'light' : 'dark';
+};
 
 </script>
 
 <template>
-  <Navbar :slideToHome="slideToHome" />
+  <Navbar :theme="theme" :toggleTheme="toggleTheme" :slideToHome="slideToHome" />
   <swiper @swiper="onSwiper"
       :direction="'vertical'"
       :slidesPerView="1"
       :spaceBetween="0"
-      :mousewheel="true"
+      :mousewheel="swiperEnabled"
       :pagination="pagination"
       :modules="swiperModules"
   >
       <swiper-slide>
-        <HomeSection />
+        <HomeSection :theme="theme" />
       </swiper-slide>
       <swiper-slide>
         <EducationSection />
