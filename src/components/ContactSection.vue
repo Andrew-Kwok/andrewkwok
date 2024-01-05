@@ -3,6 +3,8 @@
 
 <template>
   <div id="contact" class="h-screen flex flex-col justify-center items-center text-center">
+    <h1 class="absolute bottom-8 left-8 tracking-widest text-2xl font-mono writing-mode-vertical text-mixed border-base-content border-t-8 pt-4">CONTACT</h1>
+
     <h1 class="text-7xl"> Reach Me Out! </h1>
 
     <ul class="flex flex-row justify-around w-2/5 list-none text-8xl mt-5 contact-list">

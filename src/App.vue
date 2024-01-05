@@ -3,9 +3,8 @@ import { onMounted, ref } from "vue";
 
 import Navbar from '@/components/NavBar.vue'
 import HomeSection from "@/components/HomeSection.vue";
-import EducationSection from "@/components/EducationSection.vue";
+import AboutMeSection from "@/components/AboutMeSection.vue";
 import ExperienceSection from "@/components/ExperienceSection.vue";
-import ProjectSection from "@/components/ProjectSection.vue";
 import ContactSection from "@/components/ContactSection.vue";
 import AchievementSection from "@/components/AchievementSection.vue";
 
@@ -15,14 +14,14 @@ import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Mousewheel, Pagination} from "swiper/modules";
 
-const sections = ['home', 'education', 'experience', 'achievement', 'project', 'contact']
+const sections = ['Home', 'About Me', 'Experience', 'Achievement', 'Contact']
 
 const swiperModules = [Mousewheel, Pagination];
 const pagination = {
   el: ".navbar-swiper-pagination",
   clickable: true,
   renderBullet: function (index, className) {
-    return `<li class="${className} text-gray-100 btn btn-ghost" data-slide="${index}" @click="handleSlideClick(${index})">${sections[index].charAt(0).toUpperCase() + sections[index].slice(1)}</li>`;
+    return `<li class="${className} text-gray-100 btn btn-ghost" data-slide="${index}" @click="handleSlideClick(${index})">${sections[index]}</li>`;
   },
 };
 
@@ -53,28 +52,27 @@ const toggleTheme = () => {
 
 <template>
   <Navbar :theme="theme" :toggleTheme="toggleTheme" :slideToHome="slideToHome" />
-  <swiper @swiper="onSwiper"
-      :direction="'vertical'"
-      :slidesPerView="1"
-      :spaceBetween="0"
-      :mousewheel="swiperEnabled"
-      :pagination="pagination"
-      :modules="swiperModules"
+  <swiper
+    @swiper="onSwiper"
+    :direction="'vertical'"
+    :slidesPerView="1"
+    :spaceBetween="0"
+    :freeMode="false"
+    :mousewheel="swiperEnabled"
+    :pagination="pagination"
+    :modules="swiperModules"
   >
       <swiper-slide>
         <HomeSection :theme="theme" />
       </swiper-slide>
       <swiper-slide>
-        <EducationSection />
+        <AboutMeSection />
       </swiper-slide>
       <swiper-slide>
         <ExperienceSection />
       </swiper-slide>
       <swiper-slide>
         <AchievementSection />
-      </swiper-slide>
-      <swiper-slide>
-        <ProjectSection />
       </swiper-slide>
       <swiper-slide>
         <ContactSection />

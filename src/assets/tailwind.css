@@ -2,6 +2,14 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.writing-mode-vertical {
+    writing-mode: vertical-rl;
+}
+
+.text-mixed {
+    text-orientation: mixed;
+}
+
 :root {
     --email: #c08403;
     --github: #333;
