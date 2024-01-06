@@ -24,10 +24,10 @@ const combinedAwardHost = computed(() => {
 <template>
   <div class="p-2 flex w-[26rem]">
     <figure class="flex justify-center">
-      <img class="h-[30px] object-cover" v-if="medal === 'gold'" src="medal-gold.png" alt="Gold Medal">
-      <img class="h-[30px] object-cover" v-else-if="medal === 'silver'" src="medal-silver.png" alt="Silver Medal">
-      <img class="h-[30px] object-cover" v-else-if="medal === 'bronze'" src="medal-bronze.png" alt="Bronze Medal">
-      <img class="h-[30px] object-cover" v-else src="medal-other.png" alt="Other Medal">
+      <img class="h-[30px] object-cover" v-if="medal === 'gold'" src="/medal-gold.png" alt="Gold Medal">
+      <img class="h-[30px] object-cover" v-else-if="medal === 'silver'" src="/medal-silver.png" alt="Silver Medal">
+      <img class="h-[30px] object-cover" v-else-if="medal === 'bronze'" src="/medal-bronze.png" alt="Bronze Medal">
+      <img class="h-[30px] object-cover" v-else src="/medal-other.png" alt="Other Medal">
     </figure>
     <div class="ml-1 w-full">
       <h1 class="font-bold" v-html="competition"> </h1>

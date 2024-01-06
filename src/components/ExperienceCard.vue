@@ -49,10 +49,10 @@ console.log(props.experienceList[0].logo);
       <div class="card lg:card-side bg-base-200 shadow-xl w-full p-2">
         <div class="flex justify-center mt-6 pl-4" v-if="exp.logo !== null && exp.logo !== undefined && exp.logo !== ''">
           <figure class="h-[200px] aspect-square">
-            <img class="object-cover" alt="{{exp.logo}}" src="logo-govtech-procurement.png" v-if="exp.logo === 'logo-govtech-procurement.png'">
-            <img class="object-cover" alt="{{exp.logo}}" src="logo-huawei-dark.png" v-else-if="exp.logo === 'logo-huawei.png' && theme === 'light'" />
-            <img class="object-cover" alt="{{exp.logo}}" src="logo-huawei-light.png" v-else-if="exp.logo === 'logo-huawei.png' && theme === 'dark'" />
-            <img class="object-cover" alt="{{exp.logo}}" src="logo-ppsn.png" v-else-if="exp.logo === 'logo-ppsn.png'" />
+            <img class="object-cover" :alt="exp.logo" src="/logo-govtech-procurement.png" v-if="exp.logo === 'logo-govtech-procurement.png'">
+            <img class="object-cover" :alt="exp.logo" src="/logo-huawei-dark.png" v-else-if="exp.logo === 'logo-huawei.png' && theme === 'light'" />
+            <img class="object-cover" :alt="exp.logo" src="/logo-huawei-light.png" v-else-if="exp.logo === 'logo-huawei.png' && theme === 'dark'" />
+            <img class="object-cover" :alt="exp.logo" src="/logo-ppsn.png" v-else-if="exp.logo === 'logo-ppsn.png'" />
           </figure>
         </div>
         <div class="card-body">
