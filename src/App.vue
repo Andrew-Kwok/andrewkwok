@@ -26,7 +26,11 @@ const pagination = {
 };
 
 const swiperInstance = ref();
-const swiperEnabled = ref(true);
+const swiperEnabled = {
+  forceToAxis: true,
+  sensitivity: 1,
+  releaseOnEdges: true,
+}; // ref(true);
 
 const onSwiper = (swiper) => {
   swiperInstance.value = swiper;
@@ -66,16 +70,16 @@ const toggleTheme = () => {
         <HomeSection :theme="theme" />
       </swiper-slide>
       <swiper-slide>
-        <AboutMeSection />
+        <AboutMeSection :theme="theme" />
       </swiper-slide>
       <swiper-slide>
-        <ExperienceSection />
+        <ExperienceSection :theme="theme" />
       </swiper-slide>
       <swiper-slide>
-        <AchievementSection />
+        <AchievementSection :theme="theme" />
       </swiper-slide>
       <swiper-slide>
-        <ContactSection />
+        <ContactSection :theme="theme" />
       </swiper-slide>
   </swiper>
 </template>

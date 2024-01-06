@@ -1,4 +1,9 @@
 <script setup>
+import ArrowDown from "@/components/ScrollAnimation/ArrowDown.vue";
+
+const props = defineProps({
+  theme: String,
+});
 </script>
 
 <template>
@@ -14,6 +19,8 @@
       <li> <a href="https://www.linkedin.com/in/andrew-kwok-33a6b7184/"> <font-awesome-icon icon="fab fa-linkedin" class="contact-list-icon" id="contact-li" /> </a> </li>
       <li> <a href="https://wa.me/qr/VLKIV2QJQUM4E1"> <font-awesome-icon icon="fab fa-whatsapp" class="contact-list-icon" id="contact-wa" /> </a> </li>
     </ul>
+
+    <p class="absolute bottom-2 text-base-300 font-italic" style="font-family: 'Futura CondensedLight'"> Hope for the best, prepare for the worst. </p>
   </div>
 </template>
 

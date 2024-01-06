@@ -3,17 +3,47 @@ import 'swiper/css';
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, Pagination } from "swiper/modules";
+import ArrowDown from "@/components/ScrollAnimation/ArrowDown.vue";
 
-const images = [
+const props = defineProps({
+  theme: String,
+});
+
+const aboutMe = [
   {
-    src: '/sutomo-logo.png',
-    alt: 'Sutomo 1 Medan',
+    title: 'Computer Science Undergraduate',
+    description: 'I am currently pursuing a Bachelor of Science in Computer Science at the University of Toronto. I have received a full-ride scholarship, <em>Beasiswa Indonesia Maju</em>, from the Indonesian government for my study in Canada.',
   },
   {
-    src: './uoft-logo.svg',
-    alt: 'University of Toronto',
+    title: 'Software Engineer',
+    description: 'I love to explore and build things. I have experience in building web applications and backend API services.',
   },
-];
+  {
+    title: 'Competitive Programmer',
+    description: 'I have been doing competitive programming since 2017. My notable achievements are bronze medalist of IOI 2022 and gold medalist of Indonesia\'s NOI 2020.',
+  }
+]
+
+const education = [
+  {
+    title: 'Sutomo 1 Medan',
+    description: 'I had my elementary, middle, and high school education here. I developed my interest in competitive programming during my middle school, and has since been actively participating in various competitions.',
+    duration: '2010 - 2022',
+    image: {
+      src: '/logo-sutomo.png',
+      alt: 'Sutomo 1 Medan',
+    }
+  },
+  {
+    title: 'University of Toronto',
+    description: 'I am currently enrolled in Computer Science Specialist and Economics Minor program. My expected graduation is in June 2026.',
+    duration: '2022 - present',
+    image: {
+      src: './logo-uoft.svg',
+      alt: 'University of Toronto',
+    }
+  },
+]
 
 const modules = [Autoplay, Pagination];
 const pagination = {
@@ -22,7 +52,7 @@ const pagination = {
   renderBullet: function (index, className) {
     return `<li class="avatar ${className}" data-slide="${index}" @click="handleSlideClick(${index})">
               <div class="m-2 w-16 h-16 btn p-0">
-                <img src="${images[index].src}" alt="${images[index].alt}" />
+                <img src="${education[index]?.image?.src}" alt="${education[index]?.image?.alt}" />
               </div>
             </li>`
   },
@@ -37,37 +67,11 @@ const pagination = {
     <div class="hero-content max-w-md sm:max-w-screen-sm  md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl relative flex-col lg:flex-row">
 
       <div class="w-full lg:w-1/2 min-h-fit m-4">
-        <div class="collapse collapse-arrow bg-base-200 m-4 my-8">
+        <div v-for="(info, index) in aboutMe" :key="index" class="collapse collapse-arrow bg-base-200 m-4 my-8">
           <input type="radio" name="my-accordion-2" checked="checked" />
-          <div class="collapse-title text-xl font-medium">
-            Computer Science Undergraduate
-          </div>
+          <h1 v-html="info.title" class="collapse-title text-xl font-medium"></h1>
           <div class="collapse-content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eu ultricies fermentum, nunc libero ultricies urna, eget ultricies velit nisl eu nunc. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.
-            </p>
-          </div>
-        </div>
-        <div class="collapse collapse-arrow bg-base-200 m-4 my-8">
-          <input type="radio" name="my-accordion-2" />
-          <div class="collapse-title text-xl font-medium">
-            Software Engineer
-          </div>
-          <div class="collapse-content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eu ultricies fermentum, nunc libero ultricies urna, eget ultricies velit nisl eu nunc. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.
-            </p>
-          </div>
-        </div>
-        <div class="collapse collapse-arrow bg-base-200 m-4 my-8">
-          <input type="radio" name="my-accordion-2" />
-          <div class="collapse-title text-xl font-medium">
-            Competitive Programmer
-          </div>
-          <div class="collapse-content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eu ultricies fermentum, nunc libero ultricies urna, eget ultricies velit nisl eu nunc. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.
-            </p>
+            <p v-html="info.description"> </p>
           </div>
         </div>
       </div>
@@ -85,31 +89,18 @@ const pagination = {
           :navigation="true"
           class="aboutMeSwiper"
         >
-          <swiper-slide>
-            <div class="">
-              <h1 class="text-4xl font-bold"> Sutomo 1 Medan </h1>
-              <p> 2010 - 2022 </p>
-              <div class="divider"></div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eu ultricies fermentum, nunc libero ultricies urna, eget ultricies velit nisl eu nunc. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.
-              </p>
-            </div>
-          </swiper-slide>
-          <swiper-slide>
-            <div class="">
-              <h1 class="text-4xl font-bold"> University of Toronto </h1>
-              <p> 2022 - present </p>
-              <div class="divider"></div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eu ultricies fermentum, nunc libero ultricies urna, eget ultricies velit nisl eu nunc. Sed vitae nisl eget nunc aliquam aliquet. Sed vitae nisl eget nunc aliquam aliquet.
-              </p>
-            </div>
+          <swiper-slide v-for="(info, index) in education" :key="index">
+            <h1 v-html="info.title" class="text-4xl font-bold"></h1>
+            <p v-html="info.duration"></p>
+            <div class="divider"></div>
+            <p v-html="info.description"></p>
           </swiper-slide>
         </swiper>
         <ul class="about-me-swiper-pagination absolute right-0">
         </ul>
       </div>
     </div>
+    <ArrowDown :theme="props.theme" :isHome="false" />
   </div>
 </template>
 
