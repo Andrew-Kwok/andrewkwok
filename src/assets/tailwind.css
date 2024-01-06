@@ -1,0 +1,54 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.writing-mode-vertical {
+    writing-mode: vertical-rl;
+}
+
+.text-mixed {
+    text-orientation: mixed;
+}
+
+:root {
+    --email: #c08403;
+    --github: #333;
+    --instagram: #3f729b;
+    --linkedin: #0976b4;
+    --whatsapp: #25d366;
+}
+
+.contact-list-icon {
+    font-size: 3.5rem;
+    margin-right: 0.75rem;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-list a {
+    text-decoration: none;
+}
+
+.contact-list-icon:hover {
+    transform: scale(1.4);
+}
+
+.contact-list #contact-email:hover {
+    color: var(--email);
+}
+
+.contact-list #contact-git:hover {
+    color: var(--github);
+}
+
+.contact-list #contact-ig:hover {
+    color: var(--instagram);
+}
+
+.contact-list #contact-li:hover {
+    color: var(--linkedin);
+}
+
+.contact-list #contact-wa:hover {
+    color: var(--whatsapp);
+}

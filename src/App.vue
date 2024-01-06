@@ -1,87 +1,104 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import UnderConstruction from "@/components/UnderConstruction.vue";
+<script setup >
+import { onMounted, ref } from "vue";
+
+import Navbar from '@/components/NavBar.vue'
+import HomeSection from "@/components/HomeSection.vue";
+import AboutMeSection from "@/components/AboutMeSection.vue";
+import ExperienceSection from "@/components/ExperienceSection.vue";
+import ContactSection from "@/components/ContactSection.vue";
+import AchievementSection from "@/components/AchievementSection.vue";
+
+import "swiper/css";
+// import "swiper/css/pagination";
+
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Mousewheel, Pagination} from "swiper/modules";
+
+const sections = ['Home', 'About Me', 'Experience', 'Achievement', 'Contact']
+
+const swiperModules = [Mousewheel, Pagination];
+const pagination = {
+  el: ".navbar-swiper-pagination",
+  clickable: true,
+  renderBullet: function (index, className) {
+    return `<li class="${className} text-gray-100 btn btn-ghost" data-slide="${index}" @click="handleSlideClick(${index})">${sections[index]}</li>`;
+  },
+};
+
+const swiperInstance = ref();
+const swiperEnabled = {
+  forceToAxis: true,
+  sensitivity: 1,
+  releaseOnEdges: true,
+}; // ref(true);
+
+const onSwiper = (swiper) => {
+  swiperInstance.value = swiper;
+};
+
+const slideToHome = () =>   {
+  swiperInstance.value.slideTo(0);
+};
+
+const startCountdown = () => {
+  swiperEnabled.value = false;
+  setTimeout(() => {
+    swiperEnabled.value = true;
+  }, 500);
+};
+
+const theme = ref(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+const toggleTheme = () => {
+  theme.value = theme.value === 'dark' ? 'light' : 'dark';
+};
+
 </script>
 
 <template>
-<!--  <header>-->
-<!--    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />-->
-
-<!--    <div class="wrapper">-->
-<!--      <HelloWorld msg="You did it!" />-->
-
-<!--      <nav>-->
-<!--        <RouterLink to="/">Home</RouterLink>-->
-<!--        <RouterLink to="/about">About</RouterLink>-->
-<!--      </nav>-->
-<!--    </div>-->
-<!--  </header>-->
-<!--  <RouterView />-->
-
-  <UnderConstruction />
+  <Navbar :theme="theme" :toggleTheme="toggleTheme" :slideToHome="slideToHome" />
+  <swiper
+    @swiper="onSwiper"
+    :direction="'vertical'"
+    :slidesPerView="1"
+    :spaceBetween="0"
+    :freeMode="false"
+    :mousewheel="swiperEnabled"
+    :pagination="pagination"
+    :modules="swiperModules"
+  >
+      <swiper-slide>
+        <HomeSection :theme="theme" />
+      </swiper-slide>
+      <swiper-slide>
+        <AboutMeSection :theme="theme" />
+      </swiper-slide>
+      <swiper-slide>
+        <ExperienceSection :theme="theme" />
+      </swiper-slide>
+      <swiper-slide>
+        <AchievementSection :theme="theme" />
+      </swiper-slide>
+      <swiper-slide>
+        <ContactSection :theme="theme" />
+      </swiper-slide>
+  </swiper>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+#app {
+  height: 100%;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+html,
+body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-nav {
+.swiper {
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  height: 100%;
 }
 </style>
