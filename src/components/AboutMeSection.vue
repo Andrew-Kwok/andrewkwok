@@ -62,7 +62,7 @@ const pagination = {
 </script>
 
 <template>
-  <div class="hero min-h-screen relative">
+  <div class="hero h-screen relative">
     <h1 class="absolute bottom-8 left-8 tracking-widest text-2xl font-mono writing-mode-vertical text-mixed border-base-content border-t-8 pt-4">ABOUT ME</h1>
     <div class="hero-content max-w-md sm:max-w-screen-sm  md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl relative flex-col lg:flex-row">
 

@@ -186,7 +186,7 @@ const achievementGetActiveYear = () => {
 </script>
 
 <template>
-  <div id="achievement" class="hero min-h-screen relative">
+  <div id="achievement" class="hero h-screen relative">
     <h1 class="absolute bottom-8 left-8 tracking-widest text-2xl font-mono writing-mode-vertical text-mixed border-base-content border-t-8 pt-4">ACHIEVEMENTS</h1>
     <div class="hero-content max-w-md sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg">
       <div class="w-full m-4 p-4">
@@ -221,8 +221,8 @@ const achievementGetActiveYear = () => {
           :mousewheel="true"
           :modules="modules"
         >
-          <swiper-slide v-for="(achievementGroup, index) in achievements" :key="index" class="max-w-fit">
-            <div class="grid gap-4 grid-rows-4 grid-flow-col overflow-auto">
+          <swiper-slide v-for="(achievementGroup, index) in achievements" :key="index" class="min-w-fit max-w-fit">
+            <div class="grid gap-4 grid-rows-3 grid-flow-col">
               <AchievementCard v-for="(achievement, index) in achievementGroup.awards"
                                :key="index" :competition="achievement.competition"
                                :award="achievement?.award"

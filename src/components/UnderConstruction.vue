@@ -1,25 +1,15 @@
 <script setup>
-  import { ref, onMounted } from "vue";
 
-  const countdown = ref(3);
-  onMounted(() => {
-    setInterval(() => {
-      countdown.value--;
-      if (countdown.value <= 0) {
-        window.location.href = "https://andrew-kwok.github.io/";
-      }
-    }, 1000);
-  });
 </script>
 
 <template>
-  <div class="under-construction">
-    <h1 class="green">Under Construction</h1>
-    <h3>
-      This page is under construction. Visit my old website at <a href="https://andrew-kwok.github.io/" target="_blank" rel="noopener">andrew-kwok.github.io</a>.
-    </h3>
-
-    <p>Redirecting in {{ countdown }} seconds...</p>
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">Under Construction</h2>
+      <p>Mobile site is currently under construction. Please switch to a larger screen </p>
+      <p> ... or visit my old site at <a class="link link-info" href="https://andrew-kwok.github.io/">https://andrew-kwok.github.io/</a> </p>
+      <p> ... or check my <a href="https://drive.google.com/file/d/1Ey755z_0UmQICr5OfS-ovD8A3VhBnYY7/view?usp=sharing" class="underline link link-info">résumé</a> instead </p>
+    </div>
   </div>
 </template>
 
