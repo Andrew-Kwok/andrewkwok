@@ -1,5 +1,5 @@
 <script setup >
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 import Navbar from '@/components/NavBar.vue'
 import HomeSection from "@/components/HomeSection.vue";
@@ -11,8 +11,15 @@ import AchievementSection from "@/components/AchievementSection.vue";
 import "swiper/css";
 // import "swiper/css/pagination";
 
+const isMobile = ref(window.innerWidth <= 768);
+watch(() => {
+  isMobile.value = window.innerWidth <= 768;
+}, { immediate: true });
+
+
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Mousewheel, Pagination} from "swiper/modules";
+import UnderConstruction from "@/components/UnderConstruction.vue";
 
 const sections = ['Home', 'About Me', 'Experience', 'Achievement', 'Contact']
 
@@ -56,7 +63,12 @@ const toggleTheme = () => {
 
 <template>
   <Navbar :theme="theme" :toggleTheme="toggleTheme" :slideToHome="slideToHome" />
+
+  <div v-if="isMobile" class="h-screen flex justify-center items-center">
+    <UnderConstruction />
+  </div>
   <swiper
+    v-else
     @swiper="onSwiper"
     :direction="'vertical'"
     :slidesPerView="1"

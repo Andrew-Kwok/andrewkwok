@@ -58,7 +58,7 @@ onBeforeUnmount(() => {
   <div ref="lottieWrapper" class="absolute bottom-16">
     <div class="text-center" v-if="props.isHome">
       <p class="text-2xl"> Scroll down to learn more about me! </p>
-      <p class="text-2xl"> ... or check my <a href="https://google.com" class="font-bold underline link">CV</a> instead </p>
+      <p class="text-2xl"> ... or check my <a href="https://drive.google.com/file/d/1Ey755z_0UmQICr5OfS-ovD8A3VhBnYY7/view?usp=sharing" class="font-bold underline link">résumé</a> instead </p>
     </div>
     <div class="mt-4" ref="lottieContainer"></div>
   </div>
